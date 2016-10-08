@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2016/10 | ESC&#39;s Blog</title>
+  <title>获取免费Let&#39;s Encrypt证书centos 7 | ESC&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -191,96 +191,54 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/08/获取免费Let-s-Encrypt证书centos-7/">获取免费Let&#39;s Encrypt证书centos 7</a></h4>
-                            
-                            <p><time datetime="2016-10-08T06:20:51.000Z"><a href="/2016/10/08/获取免费Let-s-Encrypt证书centos-7/">2016-10-08</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/08/nginx相关乱七八糟的笔记/">nginx相关乱七八糟的笔记</a></h4>
-                            
-                            <p><time datetime="2016-10-08T02:53:21.000Z"><a href="/2016/10/08/nginx相关乱七八糟的笔记/">2016-10-08</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/08/Github pages搭建/">Github Pages搭建</a></h4>
-                            
-                            <p><time datetime="2016-10-08T02:09:43.000Z"><a href="/2016/10/08/Github pages搭建/">2016-10-08</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/04/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2016-10-03T22:22:32.030Z"><a href="/2016/10/04/hello-world/">2016-10-04</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-10-08T06:20:51.000Z" itemprop="datePublished">
+          2016-10-08
+      </time>
+    
+</span>
+                <h1>获取免费Let's Encrypt证书centos 7</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>就是敲命令行的过程。。。不解释<br>cd /root/<br>wget <a href="https://dl.eff.org/certbot-auto" target="_blank" rel="external">https://dl.eff.org/certbot-auto</a> –no-check-certificate<br>chmod +x ./certbot-auto<br>./certbot-auto -n<br>多域名单目录生成单证书<br>$ certbot certonly –webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is<br>This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.<br>单域名<br>certbot certonly –standalone -d example.com -d www.example.com</p>
+<p>续约<br>Let’s Encrypt certificates last for 90 days, so it’s highly advisable to renew them automatically! You can test automatic renewal for your certificates by running this command:<br>certbot renew –dry-run<br>If that appears to be working correctly, you can arrange for automatic renewal by adding a cron or systemd job which runs the following:<br>certbot renew –quiet </p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2016/10/08/nginx相关乱七八糟的笔记/">
+        nginx相关乱七八糟的笔记 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/10/08/获取免费Let-s-Encrypt证书centos-7/" data-title="获取免费Let&#39;s Encrypt证书centos 7" data-url="http://yoursite.com/2016/10/08/获取免费Let-s-Encrypt证书centos-7/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
