@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Hello World | ESC&#39;s Blog</title>
+  <title>test | ESC&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -197,39 +197,56 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2016-10-03T22:22:32.030Z" itemprop="datePublished">
-          2016-10-04
+      <time datetime="2016-10-08T02:09:43.000Z" itemprop="datePublished">
+          2016-10-08
       </time>
     
 </span>
-                <h1>Hello World</h1>
+                <h1>test</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+      		<p>排版就不必要了。。。<br>从小白开始搭建github blog</p>
+<ol>
+<li>首先申请账号，这就不用说了……</li>
+<li>连接github 必要的工具 git 安装也很简单就不写了</li>
+<li><p>node.js 这个js环境也很重要，安装也不用说<br>到这里总结一下遇到的问题 安装node.js是默认会配置系统变量，但是用户变量没有配置，需要自己添加，变量配置也是艸鸡简单。。。不再赘述，node.js要先安装，不然要重新打开git bash才能用</p>
+</li>
+<li><p>在github新建Repository。。。格式是用户名,github.io，基本就是填下名字之类的就好了。</p>
+</li>
+<li>Git连接github（这里是重点！！！）<br>生成一个新的SSH。<br>$ssh-keygen -t rsa -C “your e-mail”<br>这里your email一定要填对！！！不然连接不上。。。我是第二次才连接成功的，第一次任性了。。。引以为戒。<br>接下来就直接回车就好，不用管填什么东西。下面有提示在哪个目录生成了.ssh ，里面有两个文件：id_rsa , id_rsa.pub。id.rsa不用管，把id_rsa.pub添加进github，进入account-setting ，把id_rsa.pub的内容复制进去就可以了。<br>在git bash 输入ssh -T git@github.com</li>
+</ol>
+<p>这样就连接成功了</p>
+<ol>
+<li>安装hexo<br>在安装前先确认node配置好了吗。。。<br>输入 node -v，出现版本号就好了</li>
+</ol>
+<p>输入 npm install -g hexo-cli 等它一行行代码刷完就好了<br>新建hexo目录（还是重点）</p>
+<p>进入目录后输入hexo init 又是等一堆东西刷完。。。<br>这里再来个错误提示：一定要给hexo一个文件夹。。。不然上面会报错的。。。别问我怎么知道的</p>
+<p>还没完呢。。。接着输npm install<br>好了。。。运行一下hexo server 成功后<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 就能看到效果了</p>
+<p>这个图片简直是震撼啊！！！</p>
+<ol>
+<li>好了，预览玩了，Ctrl+c结束</li>
+<li>输入npm install hexo-deployer-git –save 还是看刷代码</li>
+<li>修改_config.yml文件<br>// 文件最下修改如下<br>deploy:<br>type: git<br>repo: git@github.com:用户名/用户名.github.io.git<br>branch: master</li>
+<li>发布代码<br>hexo generate -d</li>
+<li>别急，上传可能会需要三五分钟，别以为卡了就结束。。。</li>
+<li>试着访问用户名.github.io，如果和预览的结果一样，大功告成</li>
+</ol>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/10/08/test/" style="float: left;">
-        ← test
-    </a>
     
+    <a class="pull-right" href="/2016/10/04/hello-world/">
+        Hello World →
+    </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2016/10/04/hello-world/" data-title="Hello World" data-url="http://yoursite.com/2016/10/04/hello-world/"></div>
+<div class="ds-thread" data-thread-key="2016/10/08/test/" data-title="test" data-url="http://yoursite.com/2016/10/08/test/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {
