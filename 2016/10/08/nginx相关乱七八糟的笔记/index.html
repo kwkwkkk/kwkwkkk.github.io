@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | ESC&#39;s Blog</title>
+  <title>nginx相关乱七八糟的笔记 | ESC&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -191,87 +191,62 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/08/nginx相关乱七八糟的笔记/">nginx相关乱七八糟的笔记</a></h4>
-                            
-                            <p><time datetime="2016-10-08T02:53:21.000Z"><a href="/2016/10/08/nginx相关乱七八糟的笔记/">2016-10-08</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/08/Github pages搭建/">Github Pages搭建</a></h4>
-                            
-                            <p><time datetime="2016-10-08T02:09:43.000Z"><a href="/2016/10/08/Github pages搭建/">2016-10-08</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/10/04/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2016-10-03T22:22:32.030Z"><a href="/2016/10/04/hello-world/">2016-10-04</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-10-08T02:53:21.000Z" itemprop="datePublished">
+          2016-10-08
+      </time>
+    
+</span>
+                <h1>nginx相关乱七八糟的笔记</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>1.安装nginx步骤</p>
+<p>1).安装PCRE库</p>
+<p>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz<br>tar -zxvf pcre-8.39.tar.gz<br>cd pcre-8.39<br>./configure<br>make<br>make install</p>
+<p>2).安装zlib库</p>
+<p>wget <a href="http://zlib.net/zlib-1.2.8.tar.gz" target="_blank" rel="external">http://zlib.net/zlib-1.2.8.tar.gz</a><br>tar -zxvf zlib-1.2.8.tar.gz<br>cd zlib-1.2.8<br>./configure<br>make<br>make install</p>
+<p>3).安装ssl</p>
+<p>wget <a href="https://www.openssl.org/source/openssl-1.0.2j.tar.gz" target="_blank" rel="external">https://www.openssl.org/source/openssl-1.0.2j.tar.gz</a><br>tar -zxvf openssl-1.0.2j.tar.gz<br>cd openssl-1.0.2j<br>./config<br>make<br>make install</p>
+<p>4).安装nginx</p>
+<p>wget <a href="http://nginx.org/download/nginx-1.9.10.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.9.10.tar.gz</a><br>tar -zxvf nginx-1.9.10.tar.gz<br>cd nnginx-1.9.10<br>./configure prefix=/opt/nginx/nginx –with-openssl=../openssl-1.0.2j –with-pcre=../pcre-8.39 –with-zlib=../zlib-1.2.8<br>make<br>make install</p>
+<p>开启nginx<br>cd /opt/nginx/nginx/sbin<br>./nginx</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2016/10/08/Github pages搭建/">
+        Github Pages搭建 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/10/08/nginx相关乱七八糟的笔记/" data-title="nginx相关乱七八糟的笔记" data-url="http://yoursite.com/2016/10/08/nginx相关乱七八糟的笔记/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
