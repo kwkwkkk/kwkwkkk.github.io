@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="null" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ESC&#39;s Blog</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="AJAX第四天1、Ajax-jQuery框架-模仿jQuery封装ajax-12、Ajax-jQuery框架-模仿jQuery封装ajax-23、Ajax-jQuery框架-模仿jQuery封装aj,"> 
+    <meta name="author" content="kwkwkkk"> 
+    <link rel="alternative" href="atom.xml" title="ESC&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+
+</head>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div>
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>五月 21, 2017</span>
+        </div>
+        <div class="content markdown">
+            <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h3 id="第四天"><a href="#第四天" class="headerlink" title="第四天"></a>第四天</h3><h4 id="1、Ajax-jQuery框架-模仿jQuery封装ajax-1"><a href="#1、Ajax-jQuery框架-模仿jQuery封装ajax-1" class="headerlink" title="1、Ajax-jQuery框架-模仿jQuery封装ajax-1"></a>1、Ajax-jQuery框架-模仿jQuery封装ajax-1</h4><h4 id="2、Ajax-jQuery框架-模仿jQuery封装ajax-2"><a href="#2、Ajax-jQuery框架-模仿jQuery封装ajax-2" class="headerlink" title="2、Ajax-jQuery框架-模仿jQuery封装ajax-2"></a>2、Ajax-jQuery框架-模仿jQuery封装ajax-2</h4><h4 id="3、Ajax-jQuery框架-模仿jQuery封装ajax-3"><a href="#3、Ajax-jQuery框架-模仿jQuery封装ajax-3" class="headerlink" title="3、Ajax-jQuery框架-模仿jQuery封装ajax-3"></a>3、Ajax-jQuery框架-模仿jQuery封装ajax-3</h4><h4 id="4、同源策略"><a href="#4、同源策略" class="headerlink" title="4、同源策略"></a>4、同源策略</h4><p>什么是跨域</p>
+<pre><code>同源策略是浏览器的一种安全策略，所谓同源指的是请求URL地址中的协议、域名和端口号都相同，只要其中之一不相同就是跨域。
+同源策略主要是为了保证浏览器的安全性
+在同源策略下，浏览器不允许Ajax跨域获取服务器数据
+
+说简单点：跨域是指从一个域名的网页去请求另一个域名的资源。只要协议、域名、端口有任何一个的不同，就被当作是跨域。 
+</code></pre><p>跨域解决方案</p>
+<pre><code>1、jsonp，
+2、document.domain + iframe
+3、location.hash + iframe
+4、window.name + iframe
+5、window.postMessage
+6、flash 等第三方插件
+
+99%的公司都在使用jsonp。
+
+注：前端解决跨域问题的8种方案（有兴趣的同学课下研究）
+http://www.cnblogs.com/JChen666/p/3399951.html
+</code></pre><p>####　5、JSONP的原理（1）</p>
+<pre><code>静态script标签的src属性进行跨域请求
+    如果使用src这种方法进行跨域的话，一定要把这段获取数据的代码上面线先行加载，使用数据的方法放在后加载
+    这种方法的缺点就是非常的不灵活，
+
+这种方法已经极少使用，了解即可
+
+利用script标签的跨域能力，这就是jsonp的基础。
+利用js构造一个script标签，把json的url赋给script的scr属性，把这个script插入到dom里，让浏览器去获取。
+</code></pre><p>####　6、JSONP的原理（2）</p>
+<pre><code>动态创建script标签，通过标签的src属性发送请求
+动态创建script标签发出去的请求是异步请求
+服务器响应的内容【函数调用】
+</code></pre><p>####　7、JSONP的原理（3）</p>
+<pre><code>1、jsonp的本质：动态创建script标签，然后通过它src属性发送跨域请求，然后服务器响应的数据格式为【函数调用（foo实参）】
+  所以在发送请求之前必须显示先声明一个函数，并且函数的名字与参数中传递的名字要一致，这里声明的函数是由服务器响应的内容，
+  （实际就是一段js代码-函数调用）来调用
+
+
+2、注意：ajax和jsonp其实本质上是不同的东西。
+ajax的核心是通过XmlHttpRequest获取非本页内容，
+而jsonp的核心则是动态添加&lt;script&gt;标签来调用服务器提供的js脚本。
+
+3、贺师俊 --- JSONP 的工作原理是什么
+就是利用&lt;script&gt;标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。
+当需要通讯时，本站脚本创建一个&lt;script&gt;元素，地址指向第三方的API网址，
+    形如： &lt;script src=&quot;http://www.example.net/api?param1=1&amp;param2=2&quot;&gt;&lt;/script&gt; 
+并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。 
+第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如： 
+    callback({&quot;name&quot;:&quot;hax&quot;,&quot;gender&quot;:&quot;Male&quot;}) 
+这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。 
+
+4、定义函数，一定要写在调用JSONP之前。也就是，调用任何外部js，都没有函数声明头的提升。
+</code></pre>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://obbkccp90.bkt.clouddn.com/tzdjz.mp3">
+            </audio>
+        </div>
+        <!--<div class="comment link">添加评论</div>-->
+    </div>
+</div>
+    </div>
+</div>
+</body>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+
+</html>
